@@ -8,7 +8,7 @@ services:
       - ./umami:/data/umami
       - ./rsync-client-ssh:/root/.ssh
     environment:
-      CRON_TASK_1: "0 20 * * * rsync -avzx --numeric-ids -e 'ssh -p ${PORT}' ${USER}@${IP}:${SRC} /data/umami"
-      CRON_TASK_2: "0 21 * * * find /data/umami/backup/daily -maxdepth 1 -type f -mtime +30 -exec rm -f {} \\;"
-      CRON_TASK_3: "0 21 * * * find /data/umami/backup/weekly -maxdepth 1 -type f -mtime +180 -exec rm -f {} \\;"
-      CRON_TASK_4: "0 21 * * * find /data/umami/backup/monthly -maxdepth 1 -type f -mtime +365 -exec rm -f {} \\;"
+      CRON_TASK_1: "0 1 * * * rsync -avzx --numeric-ids -e 'ssh -p ${PORT}' ${USER}@${IP}:${SRC} /data/umami"
+      CRON_TASK_2: "0 2 * * * find /data/umami/backup/daily -maxdepth 1 -type f -mtime +30 -exec rm -f {} \\;"
+      CRON_TASK_3: "0 2 * * * find /data/umami/backup/weekly -maxdepth 1 -type f -mtime +180 -exec rm -f {} \\;"
+      CRON_TASK_4: "0 2 * * * find /data/umami/backup/monthly -maxdepth 1 -type f -mtime +365 -exec rm -f {} \\;"
